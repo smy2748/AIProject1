@@ -32,6 +32,12 @@ public class Dequeue<T extends Nodeable> {
         length++;
     }
 
+    public void clear(){
+        head = null;
+        tail = null;
+        length = 0;
+    }
+
     public void removeHead(){
         if(head != null){
             head = head.getNext();

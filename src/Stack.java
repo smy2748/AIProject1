@@ -19,6 +19,11 @@ public class Stack<T extends Nodeable> {
         head = n;
     }
 
+    public void clear(){
+        head = null;
+        length = 0;
+    }
+
     public T pop(){
         if(head == null){
             return null;
