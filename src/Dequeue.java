@@ -70,11 +70,22 @@ public class Dequeue<T extends Nodeable> {
         System.out.print(s);
     }
 
+    public String getStringRepresentation(){
+        String s = "{";
+        s += _aggregateNodes(head);
+        return s +"}";
+    }
+
     private String _aggregateNodes(Node<T> n){
+        String delim = ",";
         if(n == null){
             return "";
         }
-        return n.getValue().getValueAsString() + "," + _aggregateNodes(n.getNext());
+        if(n.getNext() == null){
+            delim ="";
+        }
+
+        return n.getValue().getValueAsString() + delim + _aggregateNodes(n.getNext());
     }
 
     public int getLength(){

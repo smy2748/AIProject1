@@ -59,8 +59,12 @@ public class Stack<T extends Nodeable> {
     }
 
     private String _aggregateStrings(Node<T> n){
+        String delim = ",";
         if(n== null){
             return "";
+        }
+        if(n.getNext() == null){
+            delim = "";
         }
         String s;
         T t = n.getValue();
@@ -70,7 +74,7 @@ public class Stack<T extends Nodeable> {
         else{
             s= t.getValueAsString();
         }
-        return s + "," + _aggregateStrings(n.getNext());
+        return s + delim + _aggregateStrings(n.getNext());
     }
 
     private boolean _doesNodeHaveValue(T value, Node<T> n){

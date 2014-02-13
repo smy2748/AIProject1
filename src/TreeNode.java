@@ -70,4 +70,19 @@ public class TreeNode implements Nodeable {
         }
         return 1 + _getParentChainLength(p.getParent());
     }
+
+    public String getPathAsString(){
+        return _getParentPath(this);
+    }
+
+    private String _getParentPath(TreeNode t){
+        String delim = " -> ";
+        if(t == null){
+            return "";
+        }
+        if(t.getParent() == null){
+            delim = "";
+        }
+        return t._getParentPath(t.getParent()) + delim + t.getValueAsString();
+    }
 }

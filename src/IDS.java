@@ -18,6 +18,7 @@ public class IDS {
 
         for(int depth= 0; depth < maxDepth; depth++){
             open.push(root);
+            System.out.println("\nSearching at depth: " + depth);
             tn = searchAtDepth(s, depth);
             if(tn != null){
                 return tn;
@@ -32,7 +33,11 @@ public class IDS {
 
     protected TreeNode searchAtDepth(String s, int depth){
         if(open.getLength() > 0){
+            System.out.println("\nNext Step:");
+            System.out.println("Open List: "+open.getStringRepresentation());
+            System.out.println("Closed List: " + closed.getStringRepresentation());
             TreeNode tn = open.pop();
+            System.out.println("Node Being Considered: " + tn.getValueAsString());
             closed.queue(tn);
             if(tn.getValue().equals(s)){
                 return tn;
@@ -48,8 +53,12 @@ public class IDS {
                     }
                 }
             }
+            else{
+                System.out.println("Can't add children due to deepness constraint.");
+            }
             return searchAtDepth(s,depth);
         }
+        System.out.println("No result found at depth = " + depth);
         return null;
     }
 
@@ -57,6 +66,13 @@ public class IDS {
         IDS ids = new IDS();
         TreeNode root = Tree.createTree();
         TreeNode tn = ids.search("M",root,10);
+
+        if(tn == null){
+            System.out.println("Not found");
+        }
+        else{
+            System.out.println("\nPath To Searched Node: "+ tn.getPathAsString());
+        }
 
     }
 }

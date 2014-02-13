@@ -14,9 +14,14 @@ public class DFS {
 
     public TreeNode search(String s){
         if(open.getLength() >0){
+            System.out.println("\nNext Step:");
+            System.out.println("Open List: "+open.getStringRepresentation());
+            System.out.println("Closed List: " + closed.getStringRepresentation());
             TreeNode t = open.pop();
+            System.out.println("Node Being Considered: " + t.getValueAsString());
             closed.queue(t);
             if(t.getValue().equals(s)){
+                System.out.println("Node Found");
                 return t;
             }
             ArrayList<TreeNode> tArray = t.getChildren();
@@ -24,6 +29,7 @@ public class DFS {
             for(int i= tArray.size(); i>0; i--){
                 p=tArray.get(i-1);
                 if(!open.isInStack(p) && !closed.inQueue(p)){
+                    p.setParent(t);
                     open.push(p);
                 }
             }
@@ -41,15 +47,20 @@ public class DFS {
         TreeNode root = Tree.createTree();
         DFS dfs = new DFS();
         dfs.setRoot(root);
-        dfs.search("M");
+        TreeNode result = dfs.search("M");
+        if(result == null){
+            System.out.println("No path found");
+        }
+        else{
+            System.out.println("\nPath To Searched Node: "+ result.getPathAsString());
+        }
         dfs.print();
     }
 
     public void print(){
-        System.out.print("Open Queue:");
-        System.out.print(open.getStringRepresentation());
-        System.out.print("\nClosed Queue: ");
-        closed.printQueue();
+        System.out.println("\nFinal Config: ");
+        System.out.println("Open Queue: " + open.getStringRepresentation());
+        System.out.print("Closed Queue: " + closed.getStringRepresentation());
     }
 
 }
