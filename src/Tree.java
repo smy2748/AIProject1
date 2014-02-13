@@ -21,11 +21,18 @@ public class Tree {
         return root;
     }
 
+
+    /**
+     *
+     * @return The tree shown in the project description
+     */
     public static TreeNode createTree(){
         HashMap<String, TreeNode> nodeMap = new HashMap<String, TreeNode>();
         int base = 'A';
         TreeNode t;
         String s;
+
+        //Create all nodes of tree
         for(; base <= 'R'; base++){
             s = String.valueOf((char) base);
             t = new TreeNode(s);

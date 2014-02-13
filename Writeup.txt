@@ -1,0 +1,456 @@
+Part A:
+
+BFS:
+
+Initial
+Open: {A}
+Closed: {}
+
+Expand A
+Open:{B,C,D}
+Closed:{A}
+
+Expand B
+Open:{C,D,E,F,G}
+Closed: {A,B}
+
+Expand C
+Open:{D,E,F,G}
+Closed: {A,B,C}
+
+Expand D
+Open:{E,F,G,H,I}
+Closed: {A,B,C,D}
+
+Expand E
+Open:{F,G,H,I,J,K,L}
+Closed: {A,B,C,D,E}
+
+Expand F
+Open: {G,H,I,J,K,L}
+Closed: {A,B,C,D,E,F}
+
+Expand G
+Open: {H,I,J,K,L}
+Found M as child of G
+Closed: {A,B,C,D,E,F} (because value is returned before G is closed)
+
+Path: A -> B -> G -> M
+
+
+DFS:
+
+Initial
+Open: {A}
+Closed: {}
+
+Expand A
+Open: {B,C,D}
+Closed: {A}
+
+Expand B
+Open: {E,F,G,C,D}
+Clsoed: {A,B}
+
+Expand E
+Open: {J,K,L,F,G,C,D}
+Closed: {A,B,E}
+
+Expand J
+Open: {K,L,F,G,C,D}
+Closed: {A,B,E,J}
+
+Expand K
+Open: {L,F,G,C,D}
+Closed: {A,B,E,J,K}
+
+Expand L
+Open: {F,G,C,D}
+Closed: {A,B,E,J,K,L}
+
+Expand F
+Open: {G,C,D}
+Closed: {A,B,E,J,K,L,F}
+
+Expand G
+Open: {C,D}
+Node M found as child of G.
+Closed: {A,B,E,J,K,L,F}
+
+Path: A -> B -> G -> M
+
+
+IDS:
+
+At Depth 0: A
+At Depth 1: A,B,C,D
+At Depth 2: A,B,E,F,G,C,D,H,I
+At Depth 3: A,B,E,J,K,L,F,G,M
+
+Path: A -> B -> G -> M
+
+Detail:
+Search at Depth 0
+Open:{A}
+Closed: {}
+M not found
+
+
+
+Search at Depth 1
+Initial
+Open: {A}
+Closed: {}
+
+Expand A
+Open: {B,C,D}
+Closed: {A}
+
+Expand: B
+Open: {C,D}
+Closed: {A,B}
+
+Expand C
+Open: {D}
+Closed: {A,B,C}
+
+Expand D
+Open:{}
+Closed: {A,B,C}
+
+M not found
+
+
+
+
+Search at depth 2
+
+Initial
+Open: {A}
+Closed: {}
+
+Expand A
+Open: {B,C,D}
+Closed: {A}
+
+Expand: B
+Open: {E,F,G,C,D}
+Closed: {A,B}
+
+Expand E
+Open: {F,G,C,D}
+Closed: {A,B,E}
+
+Expand F
+Open: {G,C,D}
+Closed: {A,B,E,F}
+
+Expand G
+Open: {C,D}
+Closed: {A,B,E,F,G}
+
+Expand C
+Open:{D}
+Closed: {A,B,E,F,G,C}
+
+Expand D
+Open:{H,I}
+Closed: {A,B,E,F,G,C,D}
+
+Expand H
+Open: {I}
+Closed: {A,B,E,F,G,C,D,H}
+
+Expand I
+Open: {}
+Closed: {A,B,E,F,G,C,D,H,I}
+Node M not found
+
+
+
+
+
+Search at depth 3
+
+Initial
+Open: {A}
+Closed: {}
+
+Expand A
+Open: {B,C,D}
+Closed: {A}
+
+Expand: B
+Open: {E,F,G,C,D}
+Closed: {A,B}
+
+Expand E
+Open: {J,K,L,F,G,C,D}
+Closed: {A,B,E}
+
+Expand J
+Open: {K,L,F,G,C,D}
+Closed: {A,B,E,J}
+
+Expand K
+Open: {L,F,G,C,D}
+Closed: {A,B,E,J,K}
+
+Expand L
+Open: {F,G,C,D}
+Closed: {A,B,E,J,K,L}
+
+Expand F
+Open: {G,C,D}
+Closed: {A,B,E,J,K,L,F}
+
+Expand G
+Open: {M,N,H,C,D}
+Closed: {A,B,E,J,K,L,F,G}
+
+Found M 
+
+
+
+
+
+
+
+
+
+Part B:
+
+BFS:
+
+Next Step:
+Open List: {A}
+Closed List: {}
+Node Being Considered: A
+
+Next Step:
+Open List: {B,C,D}
+Closed List: {A}
+Node Being Considered: B
+
+Next Step:
+Open List: {C,D,E,F,G}
+Closed List: {A,B}
+Node Being Considered: C
+
+Next Step:
+Open List: {D,E,F,G}
+Closed List: {A,B,C}
+Node Being Considered: D
+
+Next Step:
+Open List: {E,F,G,H,I}
+Closed List: {A,B,C,D}
+Node Being Considered: E
+
+Next Step:
+Open List: {F,G,H,I,J,K,L}
+Closed List: {A,B,C,D,E}
+Node Being Considered: F
+
+Next Step:
+Open List: {G,H,I,J,K,L}
+Closed List: {A,B,C,D,E,F}
+Node Being Considered: G
+Node Found
+
+Path To Searched Node: A -> B -> G -> M
+Open Queue: {H,I,J,K,L}
+Closed Queue: {A,B,C,D,E,F}
+
+
+DFS:
+
+Next Step:
+Open List: {A}
+Closed List: {}
+Node Being Considered: A
+
+Next Step:
+Open List: {B,C,D}
+Closed List: {A}
+Node Being Considered: B
+
+Next Step:
+Open List: {E,F,G,C,D}
+Closed List: {A,B}
+Node Being Considered: E
+
+Next Step:
+Open List: {J,K,L,F,G,C,D}
+Closed List: {A,B,E}
+Node Being Considered: J
+
+Next Step:
+Open List: {K,L,F,G,C,D}
+Closed List: {A,B,E,J}
+Node Being Considered: K
+
+Next Step:
+Open List: {L,F,G,C,D}
+Closed List: {A,B,E,J,K}
+Node Being Considered: L
+
+Next Step:
+Open List: {F,G,C,D}
+Closed List: {A,B,E,J,K,L}
+Node Being Considered: F
+
+Next Step:
+Open List: {G,C,D}
+Closed List: {A,B,E,J,K,L,F}
+Node Being Considered: G
+Node Found
+
+Path To Searched Node: A -> B -> G -> M
+
+Final Config: 
+Open Queue: {C,D}
+Closed Queue: {A,B,E,J,K,L,F}
+
+
+IDS:
+
+Searching at depth: 0
+
+Next Step:
+Open List: {A}
+Closed List: {}
+Node Being Considered: A
+Can't add children due to deepness constraint.
+No result found at depth = 0
+
+Searching at depth: 1
+
+Next Step:
+Open List: {A}
+Closed List: {}
+Node Being Considered: A
+
+Next Step:
+Open List: {B,C,D}
+Closed List: {A}
+Node Being Considered: B
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {C,D}
+Closed List: {A,B}
+Node Being Considered: C
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {D}
+Closed List: {A,B,C}
+Node Being Considered: D
+Can't add children due to deepness constraint.
+No result found at depth = 1
+
+Searching at depth: 2
+
+Next Step:
+Open List: {A}
+Closed List: {}
+Node Being Considered: A
+
+Next Step:
+Open List: {B,C,D}
+Closed List: {A}
+Node Being Considered: B
+
+Next Step:
+Open List: {E,F,G,C,D}
+Closed List: {A,B}
+Node Being Considered: E
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {F,G,C,D}
+Closed List: {A,B,E}
+Node Being Considered: F
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {G,C,D}
+Closed List: {A,B,E,F}
+Node Being Considered: G
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {C,D}
+Closed List: {A,B,E,F,G}
+Node Being Considered: C
+
+Next Step:
+Open List: {D}
+Closed List: {A,B,E,F,G,C}
+Node Being Considered: D
+
+Next Step:
+Open List: {H,I}
+Closed List: {A,B,E,F,G,C,D}
+Node Being Considered: H
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {I}
+Closed List: {A,B,E,F,G,C,D,H}
+Node Being Considered: I
+Can't add children due to deepness constraint.
+No result found at depth = 2
+
+Searching at depth: 3
+
+Next Step:
+Open List: {A}
+Closed List: {}
+Node Being Considered: A
+
+Next Step:
+Open List: {B,C,D}
+Closed List: {A}
+Node Being Considered: B
+
+Next Step:
+Open List: {E,F,G,C,D}
+Closed List: {A,B}
+Node Being Considered: E
+
+Next Step:
+Open List: {J,K,L,F,G,C,D}
+Closed List: {A,B,E}
+Node Being Considered: J
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {K,L,F,G,C,D}
+Closed List: {A,B,E,J}
+Node Being Considered: K
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {L,F,G,C,D}
+Closed List: {A,B,E,J,K}
+Node Being Considered: L
+Can't add children due to deepness constraint.
+
+Next Step:
+Open List: {F,G,C,D}
+Closed List: {A,B,E,J,K,L}
+Node Being Considered: F
+
+Next Step:
+Open List: {G,C,D}
+Closed List: {A,B,E,J,K,L,F}
+Node Being Considered: G
+
+Next Step:
+Open List: {M,N,H,C,D}
+Closed List: {A,B,E,J,K,L,F,G}
+Node Being Considered: M
+
+Path To Searched Node: A -> B -> G -> M
